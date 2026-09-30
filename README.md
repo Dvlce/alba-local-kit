@@ -63,4 +63,4 @@ Licenza MIT; dipendenze e modelli hanno le rispettive licenze. Nessuna telemetri
 
 La consultazione amministrativa nel sito completo richiede `/memory_key` emesso dal proprietario in privato: codice monouso, 15 minuti, revocabile. Un integratore deve applicare lo stesso consenso sui propri endpoint; l’accesso diretto al database rimane riservato al gestore del server.
 
-Verifica adapter: `python -m unittest discover -s tests` (7 test senza LLM: isolamento privato/gruppo, autorizzazioni, chiavi monouso, export altrui negato, consenso memoria e consolidamento). Il sito completo include altri 312 test.
+Verifica adapter: `python -m unittest discover -s tests` (7 test senza LLM: isolamento privato/gruppo, autorizzazioni, chiavi monouso, export altrui negato, consenso memoria e consolidamento). Il sito completo include altri 313 test.
