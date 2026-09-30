@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "alba-local-kit"
+version = "1.0.0"
+description = "Local conversational memory, isolated identities, Telegram and portable personal exports"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["aiohttp>=3.12,<4", "cryptography>=45,<50"]
+[project.scripts]
+alba-local = "alba_local.cli:main"
+[tool.setuptools.packages.find]
+include = ["alba_local*"]
