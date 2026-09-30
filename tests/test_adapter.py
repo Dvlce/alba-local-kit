@@ -7,6 +7,7 @@ from unittest.mock import AsyncMock
 from alba_local import AlbaLocal
 from alba_local.memory import build_context
 from alba_local.store import Scope
+from alba_local.service import Service
 
 
 class AdapterTests(unittest.IsolatedAsyncioTestCase):
@@ -70,6 +71,14 @@ class AdapterTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any(row['content'] == 'Mi chiamo Anna' for row in messages))
         self.assertTrue(Path(self.directory.name, 'data', 'alba.sqlite3').exists())
 
+
+
+    async def test_explicit_revocation_survives_seeded_user_restart(self):
+        self.alba.service.admin(type('Event',(),{'uid':1})(),['deny','2'])
+        Service(self.alba.store,self.alba.settings,self.alba.keys,self.alba.engine,self.alba.service.backups)
+        self.assertFalse(self.alba.store.allowed(2))
+        self.alba.authorize(2,actor=1)
+        self.assertTrue(self.alba.store.allowed(2))
 
 if __name__ == '__main__':
     unittest.main()
